@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare Plus Hospital - Excellence in Healthcare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #004d40;
+            --primary-light: #26a69a;
+            --accent: #ff6f61;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+            --bg-light: #f8faf9;
+            --white: #ffffff;
+            --shadow: rgba(0, 77, 64, 0.08);
+            --shadow-lg: rgba(0, 77, 64, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 20px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "⚕";
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 111, 97, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 111, 97, 0.4);
+        }
+
+        /* Page Container */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0 Q300,60 600,40 T1200,20 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.05)"/></svg>') repeat-x bottom;
+            background-size: 1200px 120px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Styles */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 30px var(--shadow);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 77, 64, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px var(--shadow-lg);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Forms */
+        .form-container {
+            background: var(--bg-light);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 800px;
+            margin: 2rem auto;
+            box-shadow: 0 10px 40px var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 4px rgba(38, 166, 154, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow-lg);
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-button:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px var(--shadow-lg);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .stats-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: scale(1.05);
+        }
+
+        .team-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--accent));
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--white);
+            box-shadow: 0 10px 30px var(--shadow-lg);
+        }
+
+        .team-member h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member .specialty {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .contact-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 3rem 2rem 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 2;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #4caf50;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideInDown 0.5s ease;
+        }
+
+        @keyframes slideInDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo" onclick="showPage('home')">MediCare Plus</a>
+            <ul class="nav-links">
+                <li><a href="#" class="active" onclick="showPage('home')" data-page="home">Home</a></li>
+                <li><a href="#" onclick="showPage('services')" data-page="services">Services</a></li>
+                <li><a href="#" onclick="showPage('doctors')" data-page="doctors">Doctors</a></li>
+                <li><a href="#" onclick="showPage('appointment')" data-page="appointment">Appointments</a></li>
+                <li><a href="#" onclick="showPage('contact')" data-page="contact">Contact</a></li>
+            </ul>
+            <a href="#" class="cta-button" onclick="showPage('appointment')">Book Appointment</a>
+        </nav>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Your Health, Our Priority</h1>
+                <p>Experience world-class healthcare with compassionate professionals dedicated to your wellbeing. Advanced medical technology meets personalized care.</p>
+                <a href="#" class="cta-button" onclick="showPage('appointment')" style="display: inline-block;">Schedule Consultation</a>
+            </div>
+        </section>
+
+        <div class="container">
+            <h2 class="section-title">Why Choose MediCare Plus?</h2>
+            <p class="section-subtitle">Excellence in healthcare through innovation and compassion</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <span class="card-icon">🏥</span>
+                    <h3>Advanced Facilities</h3>
+                    <p>State-of-the-art medical equipment and modern infrastructure ensuring the highest standards of care and diagnosis.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">👨‍⚕️</span>
+                    <h3>Expert Doctors</h3>
+                    <p>Board-certified specialists with decades of combined experience in their respective medical fields.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🕐</span>
+                    <h3>24/7 Emergency</h3>
+                    <p>Round-the-clock emergency services with rapid response teams ready to handle critical situations.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">💊</span>
+                    <h3>Comprehensive Care</h3>
+                    <p>Full spectrum of medical services from preventive care to complex surgical procedures.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🔬</span>
+                    <h3>Diagnostic Excellence</h3>
+                    <p>Advanced laboratory and imaging services providing accurate results for informed treatment decisions.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">❤️</span>
+                    <h3>Patient-Centered</h3>
+                    <p>Personalized treatment plans focusing on individual needs, comfort, and overall patient satisfaction.</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="stats">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>25+</h3>
+                    <p>Years of Excellence</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Medical Specialists</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100K+</h3>
+                    <p>Patients Treated</p>
+                </div>
+                <div class="stat-item">
+                    <h3>15+</h3>
+                    <p>Departments</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SERVICES PAGE -->
+    <div id="services" class="page">
+        <section class="hero" style="padding: 5rem 2rem 4rem;">
+            <div class="hero-content">
+                <h1>Our Medical Services</h1>
+                <p>Comprehensive healthcare solutions tailored to your needs</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="card-grid">
+                <div class="card">
+                    <span class="card-icon">❤️</span>
+                    <h3>Cardiology</h3>
+                    <p>Advanced heart care including diagnostics, interventional procedures, and cardiac rehabilitation programs.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🧠</span>
+                    <h3>Neurology</h3>
+                    <p>Expert treatment for neurological disorders, stroke care, and comprehensive brain and spine health.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🦴</span>
+                    <h3>Orthopedics</h3>
+                    <p>Joint replacement, sports medicine, and musculoskeletal care for optimal mobility and function.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">👶</span>
+                    <h3>Pediatrics</h3>
+                    <p>Specialized care for children from infancy through adolescence with child-friendly environment.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🤰</span>
+                    <h3>Obstetrics & Gynecology</h3>
+                    <p>Women's health services including prenatal care, delivery, and gynecological treatments.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🫁</span>
+                    <h3>Pulmonology</h3>
+                    <p>Respiratory care for conditions like asthma, COPD, and lung diseases with advanced diagnostics.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🩺</span>
+                    <h3>General Surgery</h3>
+                    <p>Minimally invasive and traditional surgical procedures performed by experienced surgeons.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🦷</span>
+                    <h3>Dental Care</h3>
+                    <p>Complete dental services from routine check-ups to complex dental procedures and cosmetics.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">👁️</span>
+                    <h3>Ophthalmology</h3>
+                    <p>Comprehensive eye care including cataract surgery, LASIK, and treatment of eye diseases.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🧬</span>
+                    <h3>Oncology</h3>
+                    <p>Cancer diagnosis, treatment, and support services with a multidisciplinary approach.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🧘</span>
+                    <h3>Physiotherapy</h3>
+                    <p>Rehabilitation services for injury recovery, pain management, and improved mobility.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🔬</span>
+                    <h3>Laboratory Services</h3>
+                    <p>Comprehensive diagnostic testing with state-of-the-art equipment and rapid results.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DOCTORS PAGE -->
+    <div id="doctors" class="page">
+        <section class="hero" style="padding: 5rem 2rem 4rem;">
+            <div class="hero-content">
+                <h1>Meet Our Specialists</h1>
+                <p>Highly qualified medical professionals committed to your health</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">👨‍⚕️</div>
+                    <h3>Dr. James Anderson</h3>
+                    <p class="specialty">Chief Cardiologist</p>
+                    <p>25 years of experience in interventional cardiology. MD from Harvard Medical School.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">👩‍⚕️</div>
+                    <h3>Dr. Sarah Mitchell</h3>
+                    <p class="specialty">Neurologist</p>
+                    <p>Specialist in stroke treatment and neurodegenerative diseases. Johns Hopkins graduate.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">👨‍⚕️</div>
+                    <h3>Dr. Michael Chen</h3>
+                    <p class="specialty">Orthopedic Surgeon</p>
+                    <p>Expert in joint replacement and sports medicine. Stanford University MD.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">👩‍⚕️</div>
+                    <h3>Dr. Emily Rodriguez</h3>
+                    <p class="specialty">Pediatrician</p>
+                    <p>Dedicated to children's health with 15 years of experience. Yale School of Medicine.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">👨‍⚕️</div>
+                    <h3>Dr. Robert Taylor</h3>
+                    <p class="specialty">General Surgeon</p>
+                    <p>Minimally invasive surgery specialist. Columbia University Medical Center.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">👩‍⚕️</div>
+                    <h3>Dr. Lisa Patel</h3>
+                    <p class="specialty">Oncologist</p>
+                    <p>Cancer treatment specialist with focus on personalized medicine. Mayo Clinic trained.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- APPOINTMENT PAGE -->
+    <div id="appointment" class="page">
+        <section class="hero" style="padding: 5rem 2rem 4rem;">
+            <div class="hero-content">
+                <h1>Book an Appointment</h1>
+                <p>Schedule your consultation with our medical experts</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="form-container">
+                <div id="appointmentSuccess" class="success-message">
+                    ✓ Appointment request submitted successfully! We'll contact you shortly.
+                </div>
+                <form id="appointmentForm" onsubmit="handleAppointment(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Preferred Date *</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Preferred Time *</label>
+                            <input type="time" id="time" name="time" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="department">Department *</label>
+                            <select id="department" name="department" required>
+                                <option value="">Select Department</option>
+                                <option value="cardiology">Cardiology</option>
+                                <option value="neurology">Neurology</option>
+                                <option value="orthopedics">Orthopedics</option>
+                                <option value="pediatrics">Pediatrics</option>
+                                <option value="gynecology">Obstetrics & Gynecology</option>
+                                <option value="general">General Medicine</option>
+                                <option value="dental">Dental Care</option>
+                                <option value="ophthalmology">Ophthalmology</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="doctor">Preferred Doctor</label>
+                            <select id="doctor" name="doctor">
+                                <option value="">Any Available</option>
+                                <option value="anderson">Dr. James Anderson</option>
+                                <option value="mitchell">Dr. Sarah Mitchell</option>
+                                <option value="chen">Dr. Michael Chen</option>
+                                <option value="rodriguez">Dr. Emily Rodriguez</option>
+                                <option value="taylor">Dr. Robert Taylor</option>
+                                <option value="patel">Dr. Lisa Patel</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reason">Reason for Visit</label>
+                        <textarea id="reason" name="reason" placeholder="Briefly describe your symptoms or reason for consultation"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Book Appointment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page">
+        <section class="hero" style="padding: 5rem 2rem 4rem;">
+            <div class="hero-content">
+                <h1>Get in Touch</h1>
+                <p>We're here to answer your questions and assist you</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <span class="contact-card-icon">📞</span>
+                    <h3>Phone</h3>
+                    <a href="tel:+1234567890">+1 (234) 567-890</a>
+                    <p>Emergency: +1 (234) 567-999</p>
+                </div>
+                <div class="contact-card">
+                    <span class="contact-card-icon">✉️</span>
+                    <h3>Email</h3>
+                    <a href="mailto:info@medicareplus.com">info@medicareplus.com</a>
+                    <p>support@medicareplus.com</p>
+                </div>
+                <div class="contact-card">
+                    <span class="contact-card-icon">📍</span>
+                    <h3>Location</h3>
+                    <p>123 Healthcare Avenue<br>Medical District, NY 10001</p>
+                </div>
+            </div>
+
+            <div class="form-container">
+                <h2 style="text-align: center; color: var(--primary); font-family: 'Playfair Display', serif; margin-bottom: 2rem;">Send Us a Message</h2>
+                <div id="contactSuccess" class="success-message">
+                    ✓ Message sent successfully! We'll get back to you soon.
+                </div>
+                <form id="contactForm" onsubmit="handleContact(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactName">Full Name *</label>
+                            <input type="text" id="contactName" name="contactName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address *</label>
+                            <input type="email" id="contactEmail" name="contactEmail" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactPhone">Phone Number</label>
+                        <input type="tel" id="contactPhone" name="contactPhone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required placeholder="How can we help you?"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>MediCare Plus</h3>
+                <p>Delivering excellence in healthcare with compassion, innovation, and dedication to patient wellbeing.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#" onclick="showPage('home')">Home</a>
+                <a href="#" onclick="showPage('services')">Services</a>
+                <a href="#" onclick="showPage('doctors')">Our Doctors</a>
+                <a href="#" onclick="showPage('appointment')">Book Appointment</a>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="#">Emergency Care</a>
+                <a href="#">Outpatient Services</a>
+                <a href="#">Laboratory</a>
+                <a href="#">Pharmacy</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>📞 +1 (234) 567-890</p>
+                <p>✉️ info@medicareplus.com</p>
+                <p>📍 123 Healthcare Avenue<br>Medical District, NY 10001</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MediCare Plus Hospital. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        function showPage(pageName) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageName).classList.add('active');
+            
+            // Update navigation active state
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('data-page') === pageName) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            return false;
+        }
+
+        // Appointment Form Handler
+        function handleAppointment(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // In a real application, you would send this to a server
+            console.log('Appointment Data:', data);
+            
+            // Show success message
+            const successMsg = document.getElementById('appointmentSuccess');
+            successMsg.classList.add('show');
+            
+            // Reset form
+            event.target.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 5000);
+            
+            return false;
+        }
+
+        // Contact Form Handler
+        function handleContact(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // In a real application, you would send this to a server
+            console.log('Contact Data:', data);
+            
+            // Show success message
+            const successMsg = document.getElementById('contactSuccess');
+            successMsg.classList.add('show');
+            
+            // Reset form
+            event.target.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 5000);
+            
+            return false;
+        }
+
+        // Set minimum date for appointment to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.getElementById('date');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+        });
+    </script>
+</body>
+</html>
